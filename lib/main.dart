@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:tmplayerboard/currency_widget.dart';
+import 'package:tmplayerboard/resource_widget.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,6 +18,7 @@ class MyApp extends StatelessWidget {
       title: 'TM Player Board',
       theme: ThemeData(
         primarySwatch: Colors.brown,
+        fontFamily: 'Enter Sansman',
       ),
       home: const ScorePage(title: 'TM Player Board'),
     );
@@ -37,9 +38,6 @@ class _ScorePageState extends State<ScorePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
       body: const Center(
         child: ScoreContentWidget(),
       ),
@@ -59,9 +57,9 @@ class ScoreContentWidget extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: const [
-              CurrencyWidget(label: 'MegaCredits', color: Colors.yellow),
-              CurrencyWidget(label: 'MegaCredits', color: Colors.brown),
-              CurrencyWidget(label: 'MegaCredits', color: Colors.grey),
+              ResourceWidget(label: 'MegaCredits', color: Colors.yellow),
+              ResourceWidget(label: 'MegaCredits', color: Colors.brown),
+              ResourceWidget(label: 'MegaCredits', color: Colors.grey),
             ],
           ),
         ),
@@ -70,9 +68,9 @@ class ScoreContentWidget extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: const [
-              CurrencyWidget(label: 'MegaCredits', color: Colors.green),
-              CurrencyWidget(label: 'MegaCredits', color: Colors.purple),
-              CurrencyWidget(label: 'MegaCredits', color: Colors.red),
+              ResourceWidget(label: 'MegaCredits', color: Colors.green),
+              ResourceWidget(label: 'MegaCredits', color: Colors.purple),
+              ResourceWidget(label: 'MegaCredits', color: Colors.red),
             ],
           ),
         ),
