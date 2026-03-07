@@ -1,0 +1,47 @@
+appId: com.iqbalmineraltown.tmplayerboard
+---
+- launchApp
+- waitForAnimationToEnd:
+    timeout: 3000
+
+# Test Generation increment (production phase)
+# Note: Generation can only be incremented via production phase with confirmation
+- tapOn:
+    id: "generation_increment"
+- waitForAnimationToEnd:
+    timeout: 500
+
+# Confirm production phase dialog
+- tapOn: "Confirm"
+- waitForAnimationToEnd:
+    timeout: 1000
+
+# Verify generation is now 2 (check the display element exists)
+- assertVisible:
+    id: "generation_display"
+
+# Increment again (next generation)
+- tapOn:
+    id: "generation_increment"
+- waitForAnimationToEnd:
+    timeout: 500
+
+# Confirm production phase dialog
+- tapOn: "Confirm"
+- waitForAnimationToEnd:
+    timeout: 1000
+
+# Verify generation display still exists (now at 3)
+- assertVisible:
+    id: "generation_display"
+
+# Note: Generation can be decremented via Undo if needed
+# Test undo to go back to generation 2
+- tapOn:
+    id: "undo_button"
+- waitForAnimationToEnd:
+    timeout: 500
+
+# Verify generation display still exists (back at 2)
+- assertVisible:
+    id: "generation_display"

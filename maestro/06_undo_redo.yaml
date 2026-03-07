@@ -1,0 +1,39 @@
+appId: com.iqbalmineraltown.tmplayerboard
+---
+- launchApp
+- waitForAnimationToEnd:
+    timeout: 3000
+
+# Make some changes first
+- tapOn:
+    id: "mc_amount_inc_10"
+- waitForAnimationToEnd:
+    timeout: 500
+
+- tapOn:
+    id: "steel_amount_inc_5"
+- waitForAnimationToEnd:
+    timeout: 500
+
+# Test Undo - should undo the last action (steel +5)
+- tapOn:
+    id: "undo_button"
+- waitForAnimationToEnd:
+    timeout: 500
+
+# Test Redo - should redo the steel +5
+- tapOn:
+    id: "redo_button"
+- waitForAnimationToEnd:
+    timeout: 500
+
+# Test multiple undos
+- tapOn:
+    id: "undo_button"
+- waitForAnimationToEnd:
+    timeout: 500
+
+- tapOn:
+    id: "undo_button"
+- waitForAnimationToEnd:
+    timeout: 500

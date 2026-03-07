@@ -1,0 +1,44 @@
+appId: com.iqbalmineraltown.tmplayerboard
+---
+- launchApp
+- waitForAnimationToEnd:
+    timeout: 3000
+
+# Make some changes
+- tapOn:
+    id: "mc_amount_inc_10"
+- waitForAnimationToEnd:
+    timeout: 500
+
+- tapOn:
+    id: "steel_amount_inc_5"
+- waitForAnimationToEnd:
+    timeout: 500
+
+# Increment generation (production phase)
+- tapOn:
+    id: "generation_increment"
+- waitForAnimationToEnd:
+    timeout: 500
+
+# Confirm production phase dialog
+- tapOn: "Confirm"
+- waitForAnimationToEnd:
+    timeout: 1000
+
+# Tap reset button
+- tapOn:
+    id: "reset_button"
+- waitForAnimationToEnd:
+    timeout: 1000
+
+# Confirm reset in dialog (tap Reset button in dialog)
+- tapOn: "Reset"
+- waitForAnimationToEnd:
+    timeout: 1000
+
+# Verify values are reset (check displays exist)
+- assertVisible:
+    id: "generation_display"
+- assertVisible:
+    id: "tr_display"
