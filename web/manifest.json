@@ -1,12 +1,12 @@
 {
-    "name": "tm_player_board_flutter",
-    "short_name": "tm_player_board_flutter",
+    "name": "Terraforming Mars Player Board",
+    "short_name": "TM Player Board",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#0175C2",
-    "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
-    "orientation": "portrait-primary",
+    "background_color": "#1a1a2e",
+    "theme_color": "#c41e3a",
+    "description": "Resource tracker for the Terraforming Mars board game",
+    "orientation": "landscape",
     "prefer_related_applications": false,
     "icons": [
         {

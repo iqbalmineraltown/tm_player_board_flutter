@@ -1,4 +1,4 @@
-appId: com.iqbalmineraltown.tmplayerboard
+appId: ${APP_ID}
 ---
 - launchApp
 - waitForAnimationToEnd:
