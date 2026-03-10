@@ -1,0 +1,28 @@
+# Scenario: Empty History
+# Tests the empty state of the history screen
+
+appId: com.example.tm_player_board_flutter
+---
+# Arrange
+- runFlow: ../shared/flows/launch-app.yaml
+
+# Act - Open history without any actions
+- tapOn:
+    id: "history_button"
+- waitForAnimationToEnd
+
+# Assert - Empty state message shown
+- assertVisible:
+    text: "No actions yet"
+
+# Assert - History icon visible
+- assertVisible:
+    id: "history_button"
+
+# Act - Go back
+- back
+- waitForAnimationToEnd
+
+# Assert - Main screen visible
+- assertVisible:
+    id: "generation_display"

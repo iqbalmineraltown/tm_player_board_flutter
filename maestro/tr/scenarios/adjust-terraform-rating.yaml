@@ -1,0 +1,47 @@
+# Scenario: Adjust Terraform Rating
+# Tests incrementing and decrementing the TR value
+
+appId: com.example.tm_player_board_flutter
+---
+# Arrange
+- runFlow: ../shared/flows/launch-app.yaml
+
+# Assert - TR display is visible
+- assertVisible:
+    id: "tr_display"
+
+# Act - Increment TR by 1
+- tapOn:
+    id: "tr_increment"
+- waitForAnimationToEnd
+
+# Assert - TR display still visible
+- assertVisible:
+    id: "tr_display"
+
+# Act - Increment TR multiple times
+- tapOn:
+    id: "tr_increment"
+- tapOn:
+    id: "tr_increment"
+- tapOn:
+    id: "tr_increment"
+- tapOn:
+    id: "tr_increment"
+- waitForAnimationToEnd
+
+# Act - Decrement TR by 1
+- tapOn:
+    id: "tr_decrement"
+- waitForAnimationToEnd
+
+# Act - Decrement TR multiple times
+- tapOn:
+    id: "tr_decrement"
+- tapOn:
+    id: "tr_decrement"
+- waitForAnimationToEnd
+
+# Assert - TR display still functional
+- assertVisible:
+    id: "tr_display"

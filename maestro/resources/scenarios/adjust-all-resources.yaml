@@ -1,0 +1,81 @@
+# Scenario: Adjust All Resources
+# Tests adjusting amounts and production for all 6 resource types
+
+appId: com.example.tm_player_board_flutter
+---
+# Arrange
+- runFlow: ../shared/flows/launch-app.yaml
+
+# Act & Assert - MC (Megacredits)
+- tapOn:
+    id: "mc_amount_inc_5"
+- waitForAnimationToEnd
+- tapOn:
+    id: "mc_prod_inc_1"
+- waitForAnimationToEnd
+- assertVisible:
+    id: "resource_card_megacredits"
+
+# Act & Assert - Steel
+- tapOn:
+    id: "steel_amount_inc_5"
+- waitForAnimationToEnd
+- tapOn:
+    id: "steel_prod_inc_1"
+- waitForAnimationToEnd
+- assertVisible:
+    id: "resource_card_steel"
+
+# Act & Assert - Titanium
+- tapOn:
+    id: "titanium_amount_inc_5"
+- waitForAnimationToEnd
+- tapOn:
+    id: "titanium_prod_inc_1"
+- waitForAnimationToEnd
+- assertVisible:
+    id: "resource_card_titanium"
+
+# Act & Assert - Plants
+- tapOn:
+    id: "plants_amount_inc_5"
+- waitForAnimationToEnd
+- tapOn:
+    id: "plants_prod_inc_1"
+- waitForAnimationToEnd
+- assertVisible:
+    id: "resource_card_plants"
+
+# Act & Assert - Energy
+- tapOn:
+    id: "energy_amount_inc_5"
+- waitForAnimationToEnd
+- tapOn:
+    id: "energy_prod_inc_1"
+- waitForAnimationToEnd
+- assertVisible:
+    id: "resource_card_energy"
+
+# Act & Assert - Heat
+- tapOn:
+    id: "heat_amount_inc_5"
+- waitForAnimationToEnd
+- tapOn:
+    id: "heat_prod_inc_1"
+- waitForAnimationToEnd
+- assertVisible:
+    id: "resource_card_heat"
+
+# Assert - All resource cards visible
+- assertVisible:
+    id: "resource_card_megacredits"
+- assertVisible:
+    id: "resource_card_steel"
+- assertVisible:
+    id: "resource_card_titanium"
+- assertVisible:
+    id: "resource_card_plants"
+- assertVisible:
+    id: "resource_card_energy"
+- assertVisible:
+    id: "resource_card_heat"

@@ -1,0 +1,66 @@
+# Scenario: Undo Redo Sequences
+# Tests complex sequences of undo and redo operations
+
+appId: com.example.tm_player_board_flutter
+---
+# Arrange
+- runFlow: ../shared/flows/launch-app.yaml
+
+# Act - Make multiple resource changes
+- tapOn:
+    id: "mc_amount_inc_5"
+- waitForAnimationToEnd
+
+- tapOn:
+    id: "steel_prod_inc_1"
+- waitForAnimationToEnd
+
+- tapOn:
+    id: "heat_amount_inc_10"
+- waitForAnimationToEnd
+
+- tapOn:
+    id: "tr_increment"
+- waitForAnimationToEnd
+
+# Act - Undo multiple times
+- tapOn:
+    id: "undo_button"
+- waitForAnimationToEnd
+
+- tapOn:
+    id: "undo_button"
+- waitForAnimationToEnd
+
+- tapOn:
+    id: "undo_button"
+- waitForAnimationToEnd
+
+# Assert - All resource cards visible
+- assertVisible:
+    id: "resource_card_megacredits"
+- assertVisible:
+    id: "resource_card_steel"
+- assertVisible:
+    id: "resource_card_heat"
+
+# Act - Redo multiple times
+- tapOn:
+    id: "redo_button"
+- waitForAnimationToEnd
+
+- tapOn:
+    id: "redo_button"
+- waitForAnimationToEnd
+
+- tapOn:
+    id: "redo_button"
+- waitForAnimationToEnd
+
+# Assert - All resource cards still visible
+- assertVisible:
+    id: "resource_card_megacredits"
+- assertVisible:
+    id: "resource_card_steel"
+- assertVisible:
+    id: "resource_card_heat"

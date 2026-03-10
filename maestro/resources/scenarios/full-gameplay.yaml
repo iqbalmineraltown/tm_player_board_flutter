@@ -1,0 +1,99 @@
+# Scenario: Full Gameplay
+# Tests a complete gameplay session with multiple actions
+
+appId: com.example.tm_player_board_flutter
+---
+# Arrange
+- runFlow: ../shared/flows/launch-app.yaml
+
+# Act - Setup phase: increase productions
+- tapOn:
+    id: "mc_prod_inc_1"
+- tapOn:
+    id: "mc_prod_inc_1"
+- tapOn:
+    id: "steel_prod_inc_1"
+- tapOn:
+    id: "titanium_prod_inc_1"
+- tapOn:
+    id: "plants_prod_inc_1"
+- tapOn:
+    id: "energy_prod_inc_2"
+- tapOn:
+    id: "heat_prod_inc_1"
+- waitForAnimationToEnd
+
+# Act - Gain some resources
+- tapOn:
+    id: "mc_amount_inc_10"
+- tapOn:
+    id: "steel_amount_inc_5"
+- tapOn:
+    id: "titanium_amount_inc_5"
+- waitForAnimationToEnd
+
+# Act - Increase TR
+- tapOn:
+    id: "tr_increment"
+- tapOn:
+    id: "tr_increment"
+- waitForAnimationToEnd
+
+# Act - Run production phase
+- tapOn:
+    id: "generation_increment"
+- waitForAnimationToEnd
+
+- tapOn:
+    text: "Confirm"
+- waitForAnimationToEnd
+
+# Act - More gameplay
+- tapOn:
+    id: "plants_amount_inc_8"
+- tapOn:
+    id: "heat_amount_inc_5"
+- waitForAnimationToEnd
+
+# Act - Undo some actions
+- tapOn:
+    id: "undo_button"
+- waitForAnimationToEnd
+
+# Act - Redo
+- tapOn:
+    id: "redo_button"
+- waitForAnimationToEnd
+
+# Act - View history
+- tapOn:
+    id: "history_button"
+- waitForAnimationToEnd
+
+# Assert - History screen visible
+- assertVisible:
+    text: "Action History"
+
+# Act - Go back
+- back
+- waitForAnimationToEnd
+
+# Assert - All resource cards still visible
+- assertVisible:
+    id: "resource_card_megacredits"
+- assertVisible:
+    id: "resource_card_steel"
+- assertVisible:
+    id: "resource_card_titanium"
+- assertVisible:
+    id: "resource_card_plants"
+- assertVisible:
+    id: "resource_card_energy"
+- assertVisible:
+    id: "resource_card_heat"
+
+# Assert - Control bar visible
+- assertVisible:
+    id: "generation_display"
+- assertVisible:
+    id: "tr_display"

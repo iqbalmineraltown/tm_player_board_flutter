@@ -1,0 +1,69 @@
+# Scenario: Production Phase Increases Resources
+# Tests that production phase correctly adds resources based on production values
+
+appId: com.example.tm_player_board_flutter
+---
+# Arrange - Set up some production values
+- runFlow: ../shared/flows/launch-app.yaml
+
+# Act - Set MC production to 5
+- tapOn:
+    id: "mc_prod_inc_5"
+- waitForAnimationToEnd
+
+# Act - Set Steel production to 2
+- tapOn:
+    id: "steel_prod_inc_1"
+- tapOn:
+    id: "steel_prod_inc_1"
+- waitForAnimationToEnd
+
+# Act - Set Energy production to 3
+- tapOn:
+    id: "energy_prod_inc_1"
+- tapOn:
+    id: "energy_prod_inc_1"
+- tapOn:
+    id: "energy_prod_inc_1"
+- waitForAnimationToEnd
+
+# Act - Set Heat production to 4
+- tapOn:
+    id: "heat_prod_inc_1"
+- tapOn:
+    id: "heat_prod_inc_1"
+- tapOn:
+    id: "heat_prod_inc_1"
+- tapOn:
+    id: "heat_prod_inc_1"
+- waitForAnimationToEnd
+
+# Act - Trigger production phase
+- tapOn:
+    id: "generation_increment"
+- waitForAnimationToEnd
+
+# Assert - Production phase dialog appears
+- assertVisible:
+    text: "Production Phase"
+
+# Act - Confirm production phase
+- tapOn:
+    text: "Confirm"
+- waitForAnimationToEnd
+
+# Assert - Resources should be increased by production values
+# MC = previous + production (5) + TR (20) = 25
+# Steel = previous + production (2) = 2
+# Energy = previous + production (3) = 3, then converts to heat
+# Heat = previous + production (4) + energy (3) = 7
+- assertVisible:
+    id: "resource_card_megacredits"
+- assertVisible:
+    id: "resource_card_steel"
+- assertVisible:
+    id: "resource_card_heat"
+
+# Assert - Generation should be 2
+- assertVisible:
+    id: "generation_display"

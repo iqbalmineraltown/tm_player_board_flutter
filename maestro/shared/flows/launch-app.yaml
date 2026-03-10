@@ -1,0 +1,9 @@
+# Flow: Launch Application
+# Reusable flow to launch the TM Player Board app
+# NO assertions - flows are for setup only
+
+appId: com.example.tm_player_board_flutter
+---
+- launchApp
+- waitForAnimationToEnd:
+    timeout: 3000

@@ -1,0 +1,39 @@
+# Scenario: Smoke Test
+# Basic smoke test to verify app launches and main UI is visible
+
+appId: com.example.tm_player_board_flutter
+---
+# Arrange & Act
+- runFlow: ../shared/flows/launch-app.yaml
+
+# Assert - Main UI elements visible
+- assertVisible:
+    id: "generation_display"
+- assertVisible:
+    id: "tr_display"
+- assertVisible:
+    id: "history_button"
+- assertVisible:
+    id: "undo_button"
+- assertVisible:
+    id: "redo_button"
+- assertVisible:
+    id: "reset_button"
+
+# Assert - All 6 resource cards visible
+- assertVisible:
+    id: "resource_card_megacredits"
+- assertVisible:
+    id: "resource_card_steel"
+- assertVisible:
+    id: "resource_card_titanium"
+- assertVisible:
+    id: "resource_card_plants"
+- assertVisible:
+    id: "resource_card_energy"
+- assertVisible:
+    id: "resource_card_heat"
+
+# Assert - Text labels visible
+- assertVisible:
+    text: "GEN"

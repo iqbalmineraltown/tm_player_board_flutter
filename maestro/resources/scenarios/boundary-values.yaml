@@ -1,0 +1,61 @@
+# Scenario: Boundary Values
+# Tests boundary conditions for resource values (minimum, maximum)
+
+appId: com.example.tm_player_board_flutter
+---
+# Arrange
+- runFlow: ../shared/flows/launch-app.yaml
+
+# Act - Try to decrement below 0 (should not go negative)
+- tapOn:
+    id: "mc_amount_dec_10"
+- tapOn:
+    id: "mc_amount_dec_10"
+- tapOn:
+    id: "mc_amount_dec_10"
+- waitForAnimationToEnd
+
+# Assert - MC card still visible (app didn't crash)
+- assertVisible:
+    id: "resource_card_megacredits"
+
+# Act - Try to decrement production below 0
+- tapOn:
+    id: "steel_prod_dec_10"
+- tapOn:
+    id: "steel_prod_dec_10"
+- waitForAnimationToEnd
+
+# Assert - Steel card still visible
+- assertVisible:
+    id: "resource_card_steel"
+
+# Act - Add large amounts
+- tapOn:
+    id: "titanium_amount_inc_10"
+- tapOn:
+    id: "titanium_amount_inc_10"
+- tapOn:
+    id: "titanium_amount_inc_10"
+- tapOn:
+    id: "titanium_amount_inc_10"
+- tapOn:
+    id: "titanium_amount_inc_10"
+- waitForAnimationToEnd
+
+# Assert - Titanium card still visible
+- assertVisible:
+    id: "resource_card_titanium"
+
+# Act - Add large production values
+- tapOn:
+    id: "energy_prod_inc_10"
+- tapOn:
+    id: "energy_prod_inc_10"
+- tapOn:
+    id: "energy_prod_inc_10"
+- waitForAnimationToEnd
+
+# Assert - Energy card still visible
+- assertVisible:
+    id: "resource_card_energy"

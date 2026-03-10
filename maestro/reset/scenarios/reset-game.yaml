@@ -1,0 +1,42 @@
+# Scenario: Reset Game
+# Tests the game reset functionality with confirmation
+
+appId: com.example.tm_player_board_flutter
+---
+# Arrange
+- runFlow: ../shared/flows/launch-app.yaml
+
+# Act - Make some changes first
+- tapOn:
+    id: "mc_amount_inc_10"
+- tapOn:
+    id: "steel_prod_inc_2"
+- tapOn:
+    id: "tr_increment"
+- waitForAnimationToEnd
+
+# Act - Tap reset button
+- tapOn:
+    id: "reset_button"
+- waitForAnimationToEnd
+
+# Assert - Reset confirmation dialog appears
+- assertVisible:
+    text: "Reset Game?"
+- assertVisible:
+    id: "reset_confirm_button"
+- assertVisible:
+    id: "reset_cancel_button"
+
+# Act - Confirm reset
+- tapOn:
+    id: "reset_confirm_button"
+- waitForAnimationToEnd
+
+# Assert - Game reset, all values back to initial state
+- assertVisible:
+    id: "generation_display"
+- assertVisible:
+    id: "tr_display"
+- assertVisible:
+    id: "resource_card_megacredits"

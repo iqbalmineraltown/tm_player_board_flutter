@@ -1,0 +1,73 @@
+# Scenario: Rapid Operations
+# Tests rapid button taps to ensure UI remains responsive
+
+appId: com.example.tm_player_board_flutter
+---
+# Arrange
+- runFlow: ../shared/flows/launch-app.yaml
+
+# Act - Rapid taps on increment buttons
+- tapOn:
+    id: "mc_amount_inc_1"
+- tapOn:
+    id: "mc_amount_inc_1"
+- tapOn:
+    id: "mc_amount_inc_1"
+- tapOn:
+    id: "mc_amount_inc_1"
+- tapOn:
+    id: "mc_amount_inc_1"
+- waitForAnimationToEnd
+
+# Assert - MC card visible
+- assertVisible:
+    id: "resource_card_megacredits"
+
+# Act - Rapid taps on different buttons
+- tapOn:
+    id: "steel_amount_inc_5"
+- tapOn:
+    id: "steel_prod_inc_1"
+- tapOn:
+    id: "titanium_amount_inc_10"
+- tapOn:
+    id: "titanium_prod_inc_1"
+- waitForAnimationToEnd
+
+# Assert - All cards visible
+- assertVisible:
+    id: "resource_card_steel"
+- assertVisible:
+    id: "resource_card_titanium"
+
+# Act - Rapid alternating increment/decrement
+- tapOn:
+    id: "plants_amount_inc_5"
+- tapOn:
+    id: "plants_amount_dec_5"
+- tapOn:
+    id: "plants_amount_inc_1"
+- tapOn:
+    id: "plants_amount_dec_1"
+- waitForAnimationToEnd
+
+# Assert - Plants card visible
+- assertVisible:
+    id: "resource_card_plants"
+
+# Act - Rapid undo/redo
+- tapOn:
+    id: "heat_amount_inc_10"
+- tapOn:
+    id: "undo_button"
+- tapOn:
+    id: "redo_button"
+- tapOn:
+    id: "undo_button"
+- tapOn:
+    id: "redo_button"
+- waitForAnimationToEnd
+
+# Assert - Heat card visible
+- assertVisible:
+    id: "resource_card_heat"
